@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest and Spread Operators demo</title>
+</head>
+<body>
+    <script>
+        //https://www.digitalocean.com/community/tutorials/understanding-destructuring-rest-parameters-and-spread-syntax-in-javascript
+        //Rest operator
+        //function printArgs(firstNumber, secondNumber, ...args) {
+        function printArgs(...args) {
+            //console.log(firstNumber);
+            //console.log(secondNumber);
+            console.log(args);
+        }
+
+        printArgs(1,2,3,4,5);
+
+        const str = "javascript";
+        console.log(str[0]);
+        //Spread operator in context of array
+        const oldArray = [3, 4, 5];
+        const newArray = [1, 2, ...oldArray];
+        console.log(newArray);
+
+        //Spread operator in context of string
+        const strArray = [...str];
+        console.log(strArray);
+
+        //Spread operator in context of object
+        const oldObj = {
+            lang: 'Javascript',
+            score: 28
+        }
+        const newObj1 = {...oldObj};
+        console.log(newObj1);
+
+        const newObj2 = {...oldObj, score: 32};
+        console.log(newObj2);
+
+        const newObj3 = {...oldObj, short: 'JS'};
+        console.log(newObj3);
+
+        const note = {
+            id: 1,
+            title: 'My first note',
+            date: '01/01/1970',
+            author: {
+                firstName: 'Sherlock',
+                lastName: 'Holmes',
+            },
+        }
+        // Create variables from the Object properties
+        // const id = note.id
+        // const title = note.title
+        // const date = note.date
+
+        // Destructure properties into variables
+        //You can also destructure nested object values. For example, update the note object to have a nested author object:
+        const { 
+            id, 
+            title, 
+            date,
+            author,
+            author: { firstName, lastName}
+        } = note
+        console.log(id)
+        console.log(title)
+        console.log(date)
+        console.log(author)
+        console.log(`${firstName} ${lastName}`)
+        // Note: Destructuring an object does not modify the original object. You could still call the original note with all its entries intact.
+        // Assign a custom name to a destructured value
+        const { id: noteId } = note;
+        console.log(noteId);
+
+        
+        // Finally, destructuring can be used to access the object properties of primitive values. For example, String is a global object for strings, and has a length property:
+
+    </script>
+</body>
+</html>
